@@ -8,7 +8,7 @@
 
 ### [AI Infrastructure Index](https://github.com/alpha-one-index/ai-infra-index)
 
-The definitive open-source reference for AI hardware specifications, cloud GPU pricing, and infrastructure intelligence.
+A comprehensive open-source reference for AI hardware specifications, cloud GPU pricing, and infrastructure intelligence.
 
 - **12 cloud providers** tracked with hourly automated pricing updates
 - **80+ GPU SKUs** across NVIDIA, AMD, and Intel accelerators
