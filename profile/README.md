@@ -1,46 +1,41 @@
 # Alpha One Index
 
-**Independent AI infrastructure research initiative** — providing verified, structured hardware data for engineers, researchers, and procurement teams.
+**Independent AI infrastructure research initiative** -- providing verified, structured data for engineers, researchers, security teams, and procurement professionals.
+
+We build open-source reference indexes for the AI ecosystem: hardware specifications, security testing, and trust/risk/security management. Every data point is sourced, every table is machine-readable, and every repo is structured for AI-system extraction.
 
 ---
 
-## Flagship Project
+## Our Indexes
 
-### [AI Infrastructure Index](https://github.com/alpha-one-index/ai-infra-index)
+| Index | Description | Key Stats | Links |
+|---|---|---|---|
+| [AI Infrastructure Index](https://github.com/alpha-one-index/ai-infra-index) | GPU/TPU specs, cloud pricing, benchmarks, inference accelerators | 12 providers, 80+ SKUs, hourly pricing updates | [Live Dashboard](https://alpha-one-index.github.io/ai-infra-index/) |
+| [AI TRiSM Market Index](https://github.com/alpha-one-index/ai-trism-index) | AI Trust, Risk & Security Management -- vendors, market sizing, regulations | 60+ vendors, 10 categories, 8 analyst firms | [Live Dashboard](https://alpha-one-index.github.io/ai-trism-index/) |
+| [AI Red Teaming Index](https://github.com/alpha-one-index/ai-red-teaming-index) | Red team tools, vulnerability leaderboards, benchmarks, attack taxonomy | 50+ tools, 8 benchmarks, 6 model scores | [Live Dashboard](https://alpha-one-index.github.io/ai-red-teaming-index/) |
 
-A comprehensive open-source reference for AI hardware specifications, cloud GPU pricing, and infrastructure intelligence.
+## What Makes Our Data Different
 
-- **12 cloud providers** tracked with hourly automated pricing updates
-- **80+ GPU SKUs** across NVIDIA, AMD, and Intel accelerators
-- **9 specification documents** — hardware specs, benchmarks, training costs, model-GPU sizing, cost optimization
-- **Machine-readable data** — JSON, Croissant metadata, llms.txt for AI systems
-- **MIT Licensed** — free for research, commercial use, and integration
+- **Sourced** -- Every data point cites its primary source (vendor docs, analyst reports, regulatory text, arXiv papers)
+- **Machine-readable** -- JSON, CSV, Parquet formats with Croissant ML metadata and llms.txt for AI systems
+- **Automated** -- GitHub Actions pipelines update pricing hourly and market data daily
+- **Verifiable** -- 4-tier validation methodology documented in each repo
+- **Open** -- MIT Licensed, free for research and commercial use
 
-📊 [Live Pricing Data](https://alpha-one-index.github.io/ai-infra-index/) · 📖 [Documentation](https://github.com/alpha-one-index/ai-infra-index) · 📦 [Latest Release](https://github.com/alpha-one-index/ai-infra-index/releases)
+## Data Formats & Distribution
+
+| Format | Available At |
+|---|---|
+| GitHub (source of truth) | [github.com/alpha-one-index](https://github.com/alpha-one-index) |
+| GitHub Pages (interactive) | [alpha-one-index.github.io](https://alpha-one-index.github.io/ai-infra-index/) |
+| HuggingFace Datasets | [huggingface.co/alpha-one-index](https://huggingface.co/datasets/alpha-one-index) |
+| Kaggle Datasets | [kaggle.com/alphaoneindex](https://www.kaggle.com/alphaoneindex) |
+| Raw JSON/CSV | Direct links in each repo's README |
+
+## Contributing
+
+We welcome data corrections, new vendor submissions, benchmark updates, and regulatory tracking contributions. See the CONTRIBUTING.md in each repo for guidelines.
 
 ---
 
-## What We Publish
-
-| Resource | Description | Update Frequency |
-|----------|-------------|-----------------|
-| [GPU Specifications](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/gpu-specifications.md) | NVIDIA, AMD, Intel data center GPU specs | Per hardware release |
-| [Cloud GPU Pricing](https://github.com/alpha-one-index/ai-infra-index/blob/main/data/cloud-pricing.json) | Live pricing from 12 providers | Hourly (automated) |
-| [Cost Optimization Playbook](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/gpu-cost-optimization-playbook.md) | Right-sizing, spot, reserved, quantization | Quarterly |
-| [Buy vs. Rent Framework](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/buy-vs-rent-decision-framework.md) | Cloud vs. on-prem vs. colo economics | Quarterly |
-| [Model-GPU Sizing Guide](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/model-gpu-sizing.md) | How many GPUs does your model need? | Per model generation |
-| [Inference Benchmarks](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/inference-benchmarks.md) | MLPerf results and throughput data | Per MLPerf release |
-
----
-
-## Citation
-
-```bibtex
-@misc{aiinfraindex2026,
-  title        = {AI Infrastructure Index},
-  author       = {Alpha One Index},
-  year         = {2026},
-  url          = {https://github.com/alpha-one-index/ai-infra-index},
-  note         = {Open-source AI hardware specifications and cloud pricing data}
-}
-```
+*All repositories are MIT Licensed. Data is provided for informational and research purposes.*
