@@ -51,14 +51,8 @@ jobs:
           print('Avatar generated: 500x500 centered')
           PYEOF
 
-      - name: Upload avatar via API
-        env:
-          GH_TOKEN: ${{ secrets.AVATAR_PAT }}
-        run: |
-          curl -s -X PATCH \
-            -H "Authorization: token $GH_TOKEN" \
-            -H "Accept: application/vnd.github.v3+json" \
-            -F "avatar_image=@avatar.png" \
-            https://api.github.com/user \
-            && echo "Avatar updated successfully" \
-            || echo "Avatar update failed"
+      - name: Upload avatar artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: centered-avatar
+          path: avatar.png
