@@ -1,0 +1,63 @@
+name: Update Profile Avatar
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-avatar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: pip install Pillow
+
+      - name: Generate centered logo PNG
+        run: |
+          python3 << 'PYEOF'
+          from PIL import Image, ImageDraw, ImageFont
+          import math
+
+          size = 500
+          img = Image.new('RGBA', (size, size), (13, 17, 23, 255))
+          draw = ImageDraw.Draw(img)
+
+          # Radial glow
+          for r in range(200, 0, -1):
+              alpha = int(60 * (1 - r/200) ** 2)
+              color = (0, 212, 255, alpha)
+              x0, y0 = 250 - r, 250 - r
+              x1, y1 = 250 + r, 250 + r
+              draw.ellipse([x0, y0, x1, y1], fill=color)
+
+          # Outer ring
+          draw.ellipse([80, 80, 420, 420], outline=(0, 212, 255, 128), width=2)
+          # Inner ring
+          draw.ellipse([85, 85, 415, 415], outline=(0, 212, 255, 64), width=1)
+
+          # Letter A - centered
+          try:
+              font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Light.ttf', 180)
+          except:
+              font = ImageFont.load_default()
+
+          bbox = draw.textbbox((0, 0), 'A', font=font)
+          tw = bbox[2] - bbox[0]
+          th = bbox[3] - bbox[1]
+          tx = (size - tw) / 2 - bbox[0]
+          ty = (size - th) / 2 - bbox[1]
+          draw.text((tx, ty), 'A', fill=(232, 244, 248, 255), font=font)
+          # Glow text
+          draw.text((tx, ty), 'A', fill=(0, 212, 255, 25), font=font)
+
+          img.save('avatar.png')
+          print('Avatar generated: 500x500 centered')
+          PYEOF
+
+      - name: Upload avatar via GitHub API
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -X PATCH \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -F "avatar=@avatar.png" \
+            https://api.github.com/user
